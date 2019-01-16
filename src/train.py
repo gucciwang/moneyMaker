@@ -5,10 +5,14 @@ Learning purposes -- adapted from Siraj Raval's "RL for Stock Prediction"
 from agent import Agent
 from functions import *
 import sys
+import os
 
 if len(sys.argv) != 4:
     print("Usage: python train.py [stock] [window] [episodes]")
     exit()
+
+# GPU Config 
+os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 
 stock_name, window_size, episode_count = sys.argv[1], int(sys.argv[2]), int(sys.argv[3])
 
