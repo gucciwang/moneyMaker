@@ -7,6 +7,9 @@ from keras.models import load_model
 from agent import Agent
 from functions import *
 import sys
+import os 
+
+os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 
 if len(sys.argv) != 3:
     print("Usage: python evaluate.py [stock] [model]")

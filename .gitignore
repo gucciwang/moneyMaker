@@ -1,4 +1,4 @@
 data/*
 models/*
 .idea/
-
+*.pyc
