@@ -4,6 +4,7 @@ Learning purposes -- adapted from Siraj Raval's "RL for Stock Prediction"
 
 import numpy as np
 import math
+import matplotlib.pyplot as plt
 
 # prints formatted price
 def formatPrice(n):
@@ -35,3 +36,24 @@ def getState(data, t, n):
         res.append(sigmoid(block[i + 1] - block[i]))
 
     return np.array([res])
+
+# Generates a graph upon evaluation to show when the model buys and sells
+def graph(data, buy, sell, name):
+    # reformatting
+    days = list(range(len(data)))
+    for i in range(len(data)):
+        if buy[i] == 0:
+            buy[i] = float('nan')
+
+        if sell[i] == 0:
+            sell[i] = float('nan')
+
+    # plotting
+    plt.plot(days, data, 'b',
+         days, buy, 'go',
+         days, sell, 'rx')
+    plt.xlabel('Days')
+    plt.ylabel('$$$')
+    plt.title(name)
+    plt.legend(['Price','buy','sell'])
+    plt.savefig('../images/' + name + '.png')

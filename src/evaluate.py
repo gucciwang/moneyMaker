@@ -7,7 +7,8 @@ from keras.models import load_model
 from agent import Agent
 from functions import *
 import sys
-import os 
+import os
+import matplotlib.pyplot as plt
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 
@@ -27,6 +28,8 @@ batch_size = 32
 state = getState(data, 0, window_size + 1)
 total_profit = 0
 agent.inventory = []
+buy = [0] * len(data)
+sell = [0] * len(data)
 
 for t in range(l):
     action = agent.act(state)
@@ -38,18 +41,21 @@ for t in range(l):
     if action == 1:  # buy
         agent.inventory.append(data[t])
         print("Buy: " + formatPrice(data[t]))
+        buy[t] = formatPrice(data[t])
 
     elif action == 2 and len(agent.inventory) > 0:  # sell
         bought_price = agent.inventory.pop(0)
         reward = max(data[t] - bought_price, 0)
         total_profit += data[t] - bought_price
         print("Sell: " + formatPrice(data[t]) + " | Profit: " + formatPrice(data[t] - bought_price))
+        sell[t] = formatPrice(data[t])
 
     done = True if t == l - 1 else False
     agent.memory.append((state, action, reward, next_state, done))
     state = next_state
 
     if done:
+        graph(data, buy, sell, model_name)
         print("--------------------------------")
         print(stock_name + " Total Profit: " + formatPrice(total_profit))
         print("--------------------------------")
