@@ -9,7 +9,9 @@ I spun up a notebook to add graphing capabilities, adapted the notebook content 
 
 ## 1/18 ## 
 After training a model for 24 hours, found that it failed to converge and opted to never buy or sell. 
-I believe the model was waiting for an opportune time to sell to maximize benefits, but never made the move to purchase in the first place. 
+I believe the model was waiting for an opportune time to sell to maximize benefits, but never made the move to purchase in the first place.
+
+![No action](images/model_ep1000.png "No action plot") 
 
 My plan now is to play around with the reward function and possibly tune some of the hyperparameters as so: 
 
