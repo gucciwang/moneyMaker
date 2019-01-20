@@ -28,19 +28,21 @@ for e in range(episode_count + 1):
 
     total_profit = 0
     agent.inventory = []
+    history = []
 
     for t in range(l):
         action = agent.act(state)
+        history.append(action)
 
         # sit
         next_state = getState(data, t + 1, window_size + 1)
         reward = 0
 
-        if len(agent.inventory) >= 50 and agent.inventory[-50:] == [0] * 20:
+        if action == 0 and len(history) >= 50 and history[-50:] == [0] * 20:
             reward = punishment
 
-        if action == 1:  # buy
-            if len(agent.inventory) >= 20 and agent.inventory[-20:] == [1]*20:
+        elif action == 1:  # buy
+            if len(history) >= 20 and history[-20:] == [1]*20:
                 reward = punishment
 
             agent.inventory.append(data[t])
