@@ -39,14 +39,17 @@ for e in range(episode_count + 1):
         reward = 0
 
         if action == 0 and len(history) >= 50 and history[-50:] == [0] * 20:
+            print("PUNISHED: 50 consecutive snoozes")
             reward = punishment
 
         elif action == 1:  # buy
             if len(history) >= 20 and history[-20:] == [1]*20:
                 reward = punishment
-
-            agent.inventory.append(data[t])
-            print("Buy: " + formatPrice(data[t]))
+                print("PUNISHED: 20 consecutive buys")
+                
+            else:
+                agent.inventory.append(data[t])
+                print("Buy: " + formatPrice(data[t]))
 
         elif action == 2 and len(agent.inventory) > 0:  # sell
             bought_price = agent.inventory.pop(0)
