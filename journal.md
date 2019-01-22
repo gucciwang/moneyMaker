@@ -11,10 +11,12 @@ I spun up a notebook to add graphing capabilities, adapted the notebook content 
 After training a model for 24 hours, found that it failed to converge and opted to never buy or sell. 
 I believe the model was waiting for an opportune time to sell to maximize benefits, but never made the move to purchase in the first place.
 
-![No action](images/model_ep1000.png "No action plot") 
-
 My plan now is to play around with the reward function and possibly tune some of the hyperparameters as so: 
 
 1)  Reward: 
     - If there were more that 20 consecutive buys or 50 consecutive "no action", then I gave the agent a big negative reward like -500
     - Removed the max (in the buy action) and multiplied the reward by 100.
+    
+## 1/21 ## 
+Adjusted as noted above, but still no convergence. Now experimenting with action replay. Will be turning the 
+sampling method to random. 
