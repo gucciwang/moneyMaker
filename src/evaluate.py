@@ -9,7 +9,7 @@ from functions import *
 import sys
 import os
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "1"
+os.environ["CUDA_VISIBLE_DEVICES"] = "4"
 
 if len(sys.argv) != 2:
     # print("Usage: python evaluate.py [stock] [model]")
@@ -19,7 +19,7 @@ if len(sys.argv) != 2:
 for eNum in range(10, 1001, 10):
     # stock_name, model_name = sys.argv[1], sys.argv[2]
     stock_name = sys.argv[1]
-    model_name = "model_ep" + eNum
+    model_name = "model_ep" + str(eNum)
     model = load_model("../models/SR_models/" + model_name)
     window_size = model.layers[0].input.shape.as_list()[1]
 
