@@ -53,7 +53,7 @@ for e in range(episode_count + 1):
 
         elif action == 2 and len(agent.inventory) > 0:  # sell
             bought_price = agent.inventory.pop(0)
-            reward = max(data[t] - bought_price, 0) * 100
+            reward = (data[t] - bought_price) * 100
             total_profit += data[t] - bought_price
             print("Sell: " + formatPrice(data[t]) + " | Profit: " + formatPrice(data[t] - bought_price))
 
