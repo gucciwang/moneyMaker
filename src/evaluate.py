@@ -44,14 +44,14 @@ for eNum in range(10, 1001, 10):
         if action == 1:  # buy
             agent.inventory.append(data[t])
             print("Buy: " + formatPrice(data[t]))
-            buy[t] = formatPrice(data[t])
+            buy[t] = data[t]
 
         elif action == 2 and len(agent.inventory) > 0:  # sell
             bought_price = agent.inventory.pop(0)
             reward = max(data[t] - bought_price, 0)
             total_profit += data[t] - bought_price
             print("Sell: " + formatPrice(data[t]) + " | Profit: " + formatPrice(data[t] - bought_price))
-            sell[t] = formatPrice(data[t])
+            sell[t] = data[t]
 
         done = True if t == l - 1 else False
         agent.memory.append((state, action, reward, next_state, done))
