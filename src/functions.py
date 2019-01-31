@@ -38,7 +38,7 @@ def getState(data, t, n):
     return np.array([res])
 
 # Generates a graph upon evaluation to show when the model buys and sells
-def graph(data, buy, sell, name):
+def graph(data, buy, sell, name, profit):
     # reformatting
     days = list(range(len(data)))
     for i in range(len(data)):
@@ -54,6 +54,6 @@ def graph(data, buy, sell, name):
          days, sell, 'rx')
     plt.xlabel('Days')
     plt.ylabel('$$$')
-    plt.title(name)
+    plt.title(name + ", profit: " + str(profit))
     plt.legend(['Price','buy','sell'])
     plt.savefig('../images/' + name + '.png')

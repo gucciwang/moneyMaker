@@ -64,4 +64,4 @@ for eNum in range(10, 1001, 10):
 
             if total_profit > 0:
                 print("Winner winner chicken dinner: " + model_name)
-                graph(data, buy, sell, model_name)
+                graph(data, buy, sell, model_name, total_profit)
