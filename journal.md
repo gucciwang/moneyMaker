@@ -20,3 +20,14 @@ My plan now is to play around with the reward function and possibly tune some of
 ## 1/21 ## 
 Adjusted as noted above, but still no convergence. Now experimenting with action replay. Will be turning the 
 sampling method to random. 
+
+## 1/30 ## 
+Adjusted the reward function in the sell action to give negative reward if the sell lost money. Hoorah! Finally an optimial model. However, the model seems to 
+diverge after the 110th episode out of 1000 episodes... Not sure why. Perhaps some more hyperparameter tuning or maybe needs a wider window? 
+This model was trained with 1 year of S&P 500 data (Jan 2018 -> Jan 2019) with a window size of 20 and 1000 episodes. 
+
+![Winner](images/SR_GSPC_20_1000/model_ep30.png "Winner!")
+
+Next steps: 
+- Play around with hyperparameters 
+- Try expanding the dataset of S&P 500 to a couple of years 
