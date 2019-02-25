@@ -56,4 +56,4 @@ def graph(data, buy, sell, name, profit, stock_name):
     plt.ylabel('$$$')
     plt.title(name + ", stock: " + stock_name + ", profit: " + str(profit))
     plt.legend(['Price','buy','sell'])
-    plt.savefig('../images/' + name + '.png')
+    plt.savefig('../images/' + name + "_" + stock_name + '.png')
