@@ -4,4 +4,4 @@ The goal of this project is to explore into algorithmic trading along with Reinf
 
 My best model so far, for more info, checkout journals.md: 
 
-![Winner](images/SR_GSPC_20_1000/model_ep30.png "Winner!")
+![Winner](images/SR_GSPC_20_1000/model_ep30_\^GSPC.png "Winner!")
