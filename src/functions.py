@@ -49,6 +49,7 @@ def graph(data, buy, sell, name, profit, stock_name):
             sell[i] = float('nan')
 
     # plotting
+    plt.figure(figsize=(15,5))
     plt.plot(days, data, 'b',
          days, buy, 'go',
          days, sell, 'rx')
@@ -56,4 +57,5 @@ def graph(data, buy, sell, name, profit, stock_name):
     plt.ylabel('$$$')
     plt.title(name + ", stock: " + stock_name + ", profit: " + str(profit))
     plt.legend(['Price','buy','sell'])
-    plt.savefig('../images/' + name + "_" + stock_name + '.png')
+    plt.savefig('../images/' + name + "_" + stock_name + '.png', format='png', dpi=1200)
+    plt.close()
