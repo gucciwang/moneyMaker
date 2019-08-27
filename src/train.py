@@ -7,9 +7,10 @@ from functions import *
 import sys
 import os
 
-if len(sys.argv) != 4:
-    print("Usage: python train.py [stock] [window] [episodes]")
-    exit()
+# TODO: Uncomment this section if you want to run in commandline, commenting out so it doesn't piss of SageMaker for now
+# if len(sys.argv) != 4:
+#     print("Usage: python train.py [stock] [window] [episodes]")
+#     exit()
 
 # GPU Config
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
