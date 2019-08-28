@@ -13,9 +13,9 @@ import os
 #     exit()
 
 # GPU Config
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+# os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
-stock_name, window_size, episode_count = sys.argv[1], int(sys.argv[2]), int(sys.argv[3])
+# stock_name, window_size, episode_count = sys.argv[1], int(sys.argv[2]), int(sys.argv[3])
 
 def train(stock_name, window_size, episode_count): 
     agent = Agent(window_size)
