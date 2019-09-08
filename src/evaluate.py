@@ -33,6 +33,7 @@ for eNum in range(10, 1001, 10):
     agent.inventory = []
     buy = [0] * len(data)
     sell = [0] * len(data)
+    total_spent = 0
 
     for t in range(l):
         action = agent.act(state)
@@ -45,6 +46,7 @@ for eNum in range(10, 1001, 10):
             agent.inventory.append(data[t])
             print("Buy: " + formatPrice(data[t]))
             buy[t] = data[t]
+            total_spent += data[t]
 
         elif action == 2 and len(agent.inventory) > 0:  # sell
             bought_price = agent.inventory.pop(0)
@@ -64,4 +66,4 @@ for eNum in range(10, 1001, 10):
 
             if total_profit > 0:
                 print("Winner winner chicken dinner: " + model_name)
-                graph(data, buy, sell, model_name, total_profit, stock_name)
+                graph(data, buy, sell, model_name, total_profit, stock_name, total_spent)
