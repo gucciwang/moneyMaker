@@ -8,10 +8,14 @@ from pytz import timezone
 
 from keys import *
 
+TODAY = datetime.today().strftime('%Y-%m-%d')
+YESTERDAY = datetime.strftime(datetime.now() - timedelta(1), '%Y-%m-%d')
+
 api = tradeapi.REST(
     base_url=base_url,
     key_id=api_key_id,
-    secret_key=api_secret
+    secret_key=api_secret,
+    api_version='v2'
 )
 
 session = requests.session()
@@ -32,9 +36,13 @@ def get_1000m_history_data(symbols):
     minute_history = {}
     c = 0
     for symbol in symbols:
-        minute_history[symbol] = api.polygon.historic_agg(
-            size="minute", symbol=symbol, limit=1000
-        ).df
+        minute_history[symbol] = api.polygon.historic_agg_v2(
+                symbol=symbol,
+                multiplier=1,
+                timespan='minute',
+                _from=YESTERDAY,
+                to=TODAY,
+                limit=1000).df
         c += 1
         print('{}/{}'.format(c, len(symbols)))
     print('Success.')
